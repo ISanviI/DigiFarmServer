@@ -13,7 +13,7 @@ from dotenv import load_dotenv
 # Installed pymon - similar to nodemon -> pymon {pythonfile.py}
 
 load_dotenv()
-PORT = int(os.getenv('PORT'))
+PORT = int(os.getenv('PORT', 8000))
 
 app = FastAPI()
 
@@ -100,4 +100,4 @@ async def predict(file:UploadFile = File(...)):
   # print(await file.read())
 
 if __name__ == "__main__":
-  uvicorn.run(app, host="localhost", port=PORT)
+  uvicorn.run(app, host="0.0.0.0", port=PORT)
